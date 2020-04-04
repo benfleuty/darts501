@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Darts501" targetName="Darts501" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug">
+        <ADDITIONAL_GENERATION_ENVIRONMENT>
+          <envs>
+            <env name="TERM" value="xterm-256color" />
+          </envs>
+        </ADDITIONAL_GENERATION_ENVIRONMENT>
+      </configuration>
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b269a3a-7d4f-4a9c-bdd9-efbc9a2f57dd" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZhUICvM7pQH4t9UxyUbuyJqhEP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Darts501" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Darts501" TARGET_NAME="Darts501" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Darts501" RUN_TARGET_NAME="Darts501">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b269a3a-7d4f-4a9c-bdd9-efbc9a2f57dd" name="Default Changelist" comment="" />
+      <created>1585290737024</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585290737024</updated>
+      <workItem from="1585290738240" duration="12773000" />
+      <workItem from="1585336099761" duration="9446000" />
+      <workItem from="1585405778217" duration="11430000" />
+      <workItem from="1585493539653" duration="20210000" />
+      <workItem from="1585597555077" duration="10205000" />
+      <workItem from="1585671163434" duration="2059000" />
+      <workItem from="1585715164789" duration="1199000" />
+      <workItem from="1585836044868" duration="9261000" />
+      <workItem from="1585904358785" duration="2445000" />
+      <workItem from="1586005925244" duration="8627000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="235" y="363" width="804" height="677" key="#Inspections" timestamp="1585416920040">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state x="235" y="363" width="804" height="677" key="#Inspections/0.0.2560.1403@0.0.2560.1403" timestamp="1585416920040" />
+    <state x="1315" y="363" width="804" height="677" key="#Intentions" timestamp="1585843068116">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1315" y="363" width="804" height="677" key="#Intentions/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1585843068116" />
+    <state x="1453" y="462" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585845239667">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="373" y="450" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1403@0.0.2560.1403" timestamp="1585293825806" />
+    <state x="1453" y="462" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1585845239667" />
+    <state x="398" y="446" key="#xdebugger.evaluate" timestamp="1585301087371">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state x="398" y="446" key="#xdebugger.evaluate/0.0.2560.1403@0.0.2560.1403" timestamp="1585301087371" />
+    <state width="1230" height="472" key="GridCell.Tab.-1.bottom" timestamp="1585418182553">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.-1.bottom/0.0.2560.1403@0.0.2560.1403" timestamp="1585418182553" />
+    <state width="1230" height="472" key="GridCell.Tab.-1.center" timestamp="1585418182565">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.-1.center/0.0.2560.1403@0.0.2560.1403" timestamp="1585418182565" />
+    <state width="1230" height="472" key="GridCell.Tab.-1.left" timestamp="1585418182552">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.-1.left/0.0.2560.1403@0.0.2560.1403" timestamp="1585418182552" />
+    <state width="1230" height="472" key="GridCell.Tab.-1.right" timestamp="1585418182553">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.-1.right/0.0.2560.1403@0.0.2560.1403" timestamp="1585418182553" />
+    <state width="1230" height="471" key="GridCell.Tab.0.bottom" timestamp="1586014026548">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.0.bottom/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
+    <state width="1230" height="472" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
+    <state width="1230" height="471" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473828" />
+    <state width="1230" height="471" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586014026548" />
+    <state width="1230" height="471" key="GridCell.Tab.0.center" timestamp="1586014026548">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.0.center/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
+    <state width="1230" height="472" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
+    <state width="1230" height="471" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473827" />
+    <state width="1230" height="471" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586014026548" />
+    <state width="1230" height="471" key="GridCell.Tab.0.left" timestamp="1586014026548">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.0.left/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237536" />
+    <state width="1230" height="472" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
+    <state width="1230" height="471" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473827" />
+    <state width="1230" height="471" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586014026548" />
+    <state width="1230" height="471" key="GridCell.Tab.0.right" timestamp="1586014026548">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.0.right/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
+    <state width="1230" height="472" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
+    <state width="1230" height="471" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473828" />
+    <state width="1230" height="471" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586014026548" />
+    <state width="1230" height="472" key="GridCell.Tab.1.bottom" timestamp="1585418180560">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.1.bottom/0.0.2560.1403@0.0.2560.1403" timestamp="1585418180560" />
+    <state width="1230" height="472" key="GridCell.Tab.1.center" timestamp="1585418180559">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.1.center/0.0.2560.1403@0.0.2560.1403" timestamp="1585418180559" />
+    <state width="1230" height="472" key="GridCell.Tab.1.left" timestamp="1585418180559">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.1.left/0.0.2560.1403@0.0.2560.1403" timestamp="1585418180559" />
+    <state width="1230" height="472" key="GridCell.Tab.1.right" timestamp="1585418180559">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state width="1230" height="472" key="GridCell.Tab.1.right/0.0.2560.1403@0.0.2560.1403" timestamp="1585418180559" />
+    <state x="1244" y="565" key="SettingsEditor" timestamp="1586006315688">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="136" y="336" key="SettingsEditor/0.0.2560.1403@0.0.2560.1403" timestamp="1585341049999" />
+    <state x="1244" y="565" key="SettingsEditor/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585603559054" />
+    <state x="1244" y="565" key="SettingsEditor/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586006315688" />
+    <state x="1447" y="435" width="930" height="524" key="StructurePopup" timestamp="1586010629392">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1447" y="435" width="930" height="524" key="StructurePopup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586010629392" />
+    <state width="640" height="701" key="XDebugger.FullValuePopup" timestamp="1585836249228">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state width="640" height="701" key="XDebugger.FullValuePopup/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836249228" />
+    <state x="2121" y="553" key="com.intellij.ide.util.TipDialog" timestamp="1586006000334">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="319" y="529" key="com.intellij.ide.util.TipDialog/0.0.2560.1403@0.0.2560.1403" timestamp="1585405800998" />
+    <state x="135" y="529" key="com.intellij.ide.util.TipDialog/1080.0.2560.1440/0.0.1080.1403@0.0.1080.1403" timestamp="1585597575051" />
+    <state x="135" y="529" key="com.intellij.ide.util.TipDialog/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585493544487" />
+    <state x="439" y="543" key="com.intellij.ide.util.TipDialog/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836052226" />
+    <state x="2121" y="553" key="com.intellij.ide.util.TipDialog/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586006000334" />
+    <state x="294" y="319" width="686" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585302767223">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state x="294" y="319" width="686" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1403@0.0.2560.1403" timestamp="1585302767223" />
+    <state x="1273" y="431" width="887" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1585837635106">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="193" y="420" width="887" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1403@0.0.2560.1403" timestamp="1585301264583" />
+    <state x="1273" y="431" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585837635106" />
+    <state x="1325" y="259" width="789" height="885" key="find.popup" timestamp="1585511475048">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1325" y="259" width="789" height="885" key="find.popup/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585511475048" />
+    <state x="384" y="345" width="505" height="713" key="refactoring.ChangeSignatureDialog" timestamp="1585298236253">
+      <screen x="0" y="0" width="2560" height="1403" />
+    </state>
+    <state x="384" y="345" width="505" height="713" key="refactoring.ChangeSignatureDialog/0.0.2560.1403@0.0.2560.1403" timestamp="1585298236253" />
+    <state x="1382" y="337" width="672" height="677" key="run.anything.popup" timestamp="1586010275871">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="302" y="328" key="run.anything.popup/0.0.2560.1403@0.0.2560.1403" timestamp="1585417261785" />
+    <state x="1382" y="337" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585513923582" />
+    <state x="1382" y="337" width="672" height="677" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836970013" />
+    <state x="1382" y="337" width="672" height="677" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586010275871" />
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup" timestamp="1586016297333">
+      <screen x="1080" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585512353658" />
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585603515517" />
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586016297333" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Game.cpp</url>
+          <line>275</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="currentPlayer" language="ObjectiveC" />
+        <watch expression="_player1" language="ObjectiveC" />
+        <watch expression="_player2" language="ObjectiveC" />
+        <watch expression="_matches" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
