@@ -34,22 +34,65 @@ void Player::ReduceScore(ushort score) {
     _score -= score;
 }
 
-void Player::Reset(){
-    _score = 501;
+void Player::Reset(bool resetScore) {
+    if(resetScore) _score = 501;
+     _bust = false;
+     _miss = false;
+     _nonDoubleEnd = false;
 }
 
 bool Player::IsCPU() {
     return _isCPU;
 }
 
-void Player::SetCPU(bool value){
+void Player::SetCPU(bool value) {
     _isCPU = value;
 }
 
-Target Player::GetLastTarget (){
+Target Player::GetLastTarget() {
     return _lastTarget;
 }
 
-void Player::SetLastTarget(Target target){
+void Player::SetLastTarget(Target target) {
     _lastTarget = target;
+}
+
+Target Player::GetLastHit() {
+    return _lastHit;
+}
+
+void Player::SetLastHit(Target hit) {
+    _lastHit = hit;
+}
+
+bool Player::isBust() const {
+    return _bust;
+}
+
+void Player::setBust(bool bust) {
+    _bust = bust;
+}
+
+bool Player::isMiss() const {
+    return _miss;
+}
+
+void Player::setMiss(bool miss) {
+    _miss = miss;
+}
+
+bool Player::isNonDoubleEnd() const {
+    return _nonDoubleEnd;
+}
+
+void Player::setNonDoubleEnd(bool nonDoubleEnd) {
+    _nonDoubleEnd = nonDoubleEnd;
+}
+
+short Player::getTempScore() const {
+    return _tempScore;
+}
+
+void Player::setTempScore(short tempScore) {
+    Player::_tempScore = tempScore;
 }

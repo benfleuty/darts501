@@ -81,7 +81,7 @@ public:
 
     Player SimulateTurnVsU(Player player);
 
-    void GameClearScreen();
+    void PlayClearScreen();
 };
 
 

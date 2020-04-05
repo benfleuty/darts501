@@ -114,7 +114,7 @@ bool WhoThrowsFirst() {
 
         // get the length of the midpoint
         p1Result = getHyp(p1X,p1Y);
-        
+
         p2X = CalcThrowResult(P2.GetAccuracy()) * 0.5;
         p2Y = CalcThrowResult(P2.GetAccuracy()) * 0.5;
 
@@ -163,6 +163,7 @@ int main() {
     system("title \"501 Darts | Ben Fleuty 1900040 | CMP 102 Assessment");
 #endif
 
+#ifdef NDEBUG
     SetupP1();
 
     UserIO::ClearScreen();
@@ -178,6 +179,21 @@ int main() {
     Game game = SetupGame();
 
     game.Start();
+#else
+    UserIO::ClearScreen();
+
+    P1.SetName("ben");
+    P1.SetAccuracy(73);
+    P1.SetCPU(0);
+
+    P2.SetName("neb");
+    P2.SetAccuracy(71);
+    P2.SetCPU(0);
+
+    Game game = Game(P1,P2,1,1);
+    game.Start();
+
+#endif
 
     UserIO::ClearScreen();
     cout.clear();

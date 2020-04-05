@@ -12,6 +12,9 @@ using namespace std;
 typedef unsigned short ushort;
 typedef unsigned long ulong;
 
+ushort match, set, game;
+
+
 enum Multiplier {
     Zero, Single, Double, Triple
 };
@@ -24,18 +27,23 @@ bool Game::IsPlayerVsAI() {
     return (_player1.IsCPU() ^ _player2.IsCPU());
 }
 
-void Game::GameClearScreen() {
+void Game::PlayClearScreen() {
     UserIO::ClearScreen();
     string out;
+    out += "Match: " + to_string(match) + " Set " + to_string(set) + " Game " + to_string(game) + "\n\n";
     Player player = _player1;
     for (int i = 0; i < 2; ++i) {
+        //region name out
         out += player.GetName() + ":\n";
-        out += "Score: " + to_string(player.GetScore());
-        out += +"\nLast hit: ";
-        if (player.GetLastTarget().GetMultiplier() > 0 && player.GetScore() < 501) {
+        //endregion
+        //region score out
+        out += "Score: " + to_string(player.getTempScore());
+        out += +"\nLast target: ";
+        if (player.getTempScore() < 501) {
             switch (player.GetLastTarget().GetMultiplier()) {
                 case Single:
-                    out += "single ";
+                    out += (player.GetLastTarget().GetValue() == 25 || player.GetLastTarget().GetValue() == 50)
+                           ? "" : "single ";
                     break;
                 case Double:
                     out += "double ";
@@ -48,20 +56,57 @@ void Game::GameClearScreen() {
                     break;
             }
             out += to_string(player.GetLastTarget().GetValue());
-        } else out += "no darts thrown yet!";
-        if (player.GetLastTarget().GetValue() > 1)
+        } else out += "no points scored yet!";
+        if (player.GetLastTarget().GetMultiplier() > 1)
             out += " totalling " + to_string(player.GetLastTarget().GetValue(true));
+        //endregion
+        //region hit out
+        out += +"\nLast hit: ";
+        if (player.getTempScore() < 501) {
+            switch (player.GetLastHit().GetMultiplier()) {
+                case Single:
+                    out += (player.GetLastHit().GetValue() == 25 || player.GetLastHit().GetValue() == 50)
+                           ? "" : "single ";
+                    break;
+                case Double:
+                    out += "double ";
+                    break;
+                case Triple:
+                    out += "triple ";
+                    break;
+                default:
+                    out += "ERROR";
+                    break;
+            }
+            out += to_string(player.GetLastHit().GetValue());
+        } else out += "no points scored yet!";
+        if (player.GetLastHit().GetMultiplier() > 1) {
+            out += " totalling " + to_string(player.GetLastHit().GetValue(true));
+            out += ((player.isBust()) ? " - YOU WENT BUST!" : "");
+            out += ((player.isNonDoubleEnd()) ? " - YOU MUST END ON A DOUBLE!" : "");
+        }
+        //endregion
 
         out += "\n";
-
+        //region player swap || end loop
         if (player.GetName() == _player2.GetName())
             out += "\n";
         else player = _player2;
     }
-
+    //endregion
+    // output out
     cout << out << endl;
 }
 
+bool IsMultipleOf(int multipleOf, int input) {
+    return input % multipleOf == 0;
+}
+
+bool Game::IsPossibleScore(ushort input) {
+    return input <= 22 ||
+           (IsMultipleOf(3, input) && input <= 60) ||
+           (IsMultipleOf(2, input) && input <= 40);
+}
 
 void Game::Start() {
     // Simulation Match loop
@@ -74,6 +119,8 @@ void Game::Start() {
         // Play Match loop
     else for (int i = 0; i < _iterations; ++i) PlayMatch();
 }
+
+//region Simulation
 
 void Game::SimulateMatch() {
     for (ushort i = 0; i < 13; ++i) {
@@ -129,92 +176,6 @@ void Game::SimulateGame() {
     }
 }
 
-void Game::PlayMatch() {
-    for (ushort i = 0; i < 13; ++i) {
-        PlaySet();
-        if (p1SetWins == 7 || p2SetWins == 7) {
-            array<ushort, 2> result = {p1SetWins, p2SetWins};
-            _matches.push_back(result);
-            p1SetWins = 0;
-            p2SetWins = 0;
-            break;
-        }
-    }
-}
-
-void Game::PlaySet() {
-    // Set loop
-    for (int i = 0; i < 5; ++i) {
-        (IsPlayerVsAI()) ? PlayGameUvsCPU() : PlayGameUvsU();
-        if (p1GameWins == 3 || p2GameWins == 3) {
-            (p1GameWins == 3) ? p1SetWins++ : p2SetWins++;
-            p1GameWins = 0;
-            p2GameWins = 0;
-            break;
-        }
-    }
-}
-
-void Game::PlayGameUvsCPU() {
-    // Game loop
-    Player currentPlayer;
-    _player1.Reset();
-    _player2.Reset();
-    if (_firstThrower) currentPlayer = _player1;
-    else currentPlayer = _player2;
-    _firstThrower = !_firstThrower;
-    while (true) {
-        if (currentPlayer.IsCPU())
-            currentPlayer = SimulateTurnVsU(currentPlayer);
-        else currentPlayer = PlayTurn(currentPlayer);
-        if (currentPlayer.GetScore() == 0) {
-            if (currentPlayer.GetName() == _player1.GetName())
-                p1GameWins++;
-            else if (currentPlayer.GetName() == _player2.GetName())
-                p2GameWins++;
-            break;
-        }
-
-        if (currentPlayer.GetName() == _player1.GetName()) {
-            _player1 = currentPlayer;
-            currentPlayer = _player2;
-        } else {
-            _player2 = currentPlayer;
-            currentPlayer = _player1;
-        }
-    }
-}
-
-void Game::PlayGameUvsU() {
-    // Game loop
-    Player currentPlayer;
-    _player1.Reset();
-    _player2.Reset();
-    if (_firstThrower) currentPlayer = _player1;
-    else currentPlayer = _player2;
-    _firstThrower = !_firstThrower;
-    while (true) {
-        if (int x = 2);
-        currentPlayer = SimulateTurn(currentPlayer);
-        if (currentPlayer.GetScore() == 0) {
-            if (currentPlayer.GetName() == _player1.GetName())
-                p1GameWins++;
-            else if (currentPlayer.GetName() == _player2.GetName())
-                p2GameWins++;
-            break;
-        }
-
-        if (currentPlayer.GetName() == _player1.GetName()) {
-            _player1 = currentPlayer;
-            currentPlayer = _player2;
-        } else {
-            _player2 = currentPlayer;
-            currentPlayer = _player1;
-        }
-    }
-}
-
-
 Player Game::SimulateTurn(Player player) {
     Player currentPlayer = player;
 
@@ -243,57 +204,6 @@ Player Game::SimulateTurnVsU(Player player) {
     }
 
     return currentPlayer;
-}
-
-Player Game::PlayTurn(Player player) {
-    Player currentPlayer = player;
-    ushort playerTargetScore = 0;
-    ushort playerMultiplier = 0;
-
-    for (ushort i = 0; i < 3; i++) {
-        do {
-            GameClearScreen();
-            playerTargetScore = UserIO::uShort("Your target [1 - 20]: ");
-        } while (!playerTargetScore || playerTargetScore > 20);
-
-        do {
-            // Issue: Clang-Tidy: Narrowing conversion from 'int' to signed type 'char' is implementation-defined
-            // Fix  : Explicitly defining char as unsigned as the implementation of char is decided at compile time an differs depending on the compiler
-            unsigned char input = UserIO::String("Would you like to aim for a (S)ingle, (D)ouble, or (T)riple? : ",
-                                                 false)[0];
-            input = tolower(input);
-            if (input == 's') playerMultiplier = Single;
-            else if (input == 'd') playerMultiplier = Double;
-            else if (input == 't') playerMultiplier = Triple;
-            else {
-                GameClearScreen();
-                cout << "Your input is not valid!\nYour target [1 - 20]: " << to_string(playerTargetScore) << endl;
-                continue;
-            }
-            break;
-        } while (true);
-
-        if (playerMultiplier == Single) PlayThrowAt(Target(playerTargetScore), currentPlayer);
-        else if (playerMultiplier == Double) PlayThrowAt(Target(playerTargetScore, 2), currentPlayer);
-        else PlayThrowAt(Target(playerTargetScore, 3), currentPlayer);
-
-        // if the player has won
-        if (currentPlayer.GetScore() == 0) break;
-        // if the player has busted
-        if (currentPlayer.GetScore() < 2) return player;
-    }
-
-    return currentPlayer;
-}
-
-bool IsMultipleOf(int multipleOf, int input) {
-    return input % multipleOf == 0;
-}
-
-bool Game::IsPossibleScore(ushort input) {
-    return input <= 22 ||
-           (IsMultipleOf(3, input) && input <= 60) ||
-           (IsMultipleOf(2, input) && input <= 40);
 }
 
 Target Game::calcRange(short range) {
@@ -410,21 +320,164 @@ void Game::SimulateThrowAt(Target target, Player &player) {
     }
 
 
-    player.SetLastTarget(target);
-
     // take hit from score
     player.ReduceScore(target.GetValue(true));
 
 }
 
-void Game::PlayThrowAt(Target target, Player &player) {
-    string msg = player.GetName() + " throws at ";
-    bool miss = false;
-    if (target.GetMultiplier() == Triple) msg += "triple ";
-    else if (target.GetMultiplier() == Double) msg += "double ";
-    msg += to_string(target.GetValue()) + "\n";
+//endregion
+//region User plays
 
+void Game::PlayMatch() {
+    for (ushort i = 0; i < 13; ++i) {
+        PlaySet();
+        if (p1SetWins == 7 || p2SetWins == 7) {
+            array<ushort, 2> result = {p1SetWins, p2SetWins};
+            _matches.push_back(result);
+            p1SetWins = 0;
+            p2SetWins = 0;
+            break;
+        }
+    }
+}
+
+void Game::PlaySet() {
+    // Set loop
+    for (int i = 0; i < 5; ++i) {
+        (IsPlayerVsAI()) ? PlayGameUvsCPU() : PlayGameUvsU();
+        if (p1GameWins == 3 || p2GameWins == 3) {
+            (p1GameWins == 3) ? p1SetWins++ : p2SetWins++;
+            p1GameWins = 0;
+            p2GameWins = 0;
+            break;
+        }
+    }
+}
+
+void Game::PlayGameUvsCPU() {
+    // Game loop
+    Player currentPlayer;
+    _player1.Reset();
+    _player2.Reset();
+    if (_firstThrower) currentPlayer = _player1;
+    else currentPlayer = _player2;
+    _firstThrower = !_firstThrower;
+    while (true) {
+        if (currentPlayer.IsCPU())
+            currentPlayer = SimulateTurnVsU(currentPlayer);
+        else currentPlayer = PlayTurn(currentPlayer);
+        if (currentPlayer.GetScore() == 0) {
+            if (currentPlayer.GetName() == _player1.GetName())
+                p1GameWins++;
+            else if (currentPlayer.GetName() == _player2.GetName())
+                p2GameWins++;
+            break;
+        }
+
+        if (currentPlayer.GetName() == _player1.GetName()) {
+            _player1 = currentPlayer;
+            currentPlayer = _player2;
+        } else {
+            _player2 = currentPlayer;
+            currentPlayer = _player1;
+        }
+    }
+}
+
+void ResetPlayer1() {
+
+}
+
+void Game::PlayGameUvsU() {
+    // Game loop
+    Player currentPlayer;
+    _player1.Reset();
+    _player2.Reset();
+    if (_firstThrower) currentPlayer = _player1;
+    else currentPlayer = _player2;
+    _firstThrower = !_firstThrower;
+
+    // while no one has won
+    while (p1GameWins != 3 && p2GameWins != 3) {
+        for (int i = 0; i < 3; ++i) {
+            PlayClearScreen();
+            // take three throws
+            currentPlayer = PlayTurn(currentPlayer);
+            if (currentPlayer.GetName() == _player1.GetName()) _player1 = currentPlayer;
+            else _player2 = currentPlayer;
+            if (currentPlayer.GetScore() == 0 || currentPlayer.isBust()) break;
+        }
+
+        // if the player has won
+        if (currentPlayer.GetScore() == 0) {
+            if (currentPlayer.GetName() == _player1.GetName())
+                p1GameWins++;
+            else if (currentPlayer.GetName() == _player2.GetName())
+                p2GameWins++;
+            break;
+        }
+
+        //swap players
+        if (currentPlayer.GetName() == _player1.GetName()) {
+            _player1 = currentPlayer;
+            currentPlayer = _player2;
+        } else {
+            _player2 = currentPlayer;
+            currentPlayer = _player1;
+        }
+    }
+}
+
+Player Game::PlayTurn(Player player) {
+    Player currentPlayer = player;
+    currentPlayer.Reset();
+    ushort playerTargetScore = 0;
+    ushort playerMultiplier = 0;
+
+    do {
+        PlayClearScreen();
+        cout << player.GetName() << endl;
+        playerTargetScore = UserIO::uShort("Your target [1 - 20, 25, 50]: ");
+    } while (playerTargetScore == 0 ||
+             (playerTargetScore > 20 && ((playerTargetScore != 25) == (playerTargetScore != 50))));
+//              Above line :: A.!(B XOR C)
+    do {
+        if (playerTargetScore == 25 || playerTargetScore == 50) {
+            playerMultiplier = 1;
+            break;
+        }
+        // Issue: Clang-Tidy: Narrowing conversion from 'int' to signed type 'char' is implementation-defined
+        // Fix  : Explicitly defining char as unsigned as the implementation of char is decided at compile time an differs depending on the compiler
+        unsigned char input = UserIO::String("Would you like to aim for a (S)ingle, (D)ouble, or (T)riple? : ",
+                                             false)[0];
+        input = tolower(input);
+        if (input == 's') playerMultiplier = Single;
+        else if (input == 'd') playerMultiplier = Double;
+        else if (input == 't') playerMultiplier = Triple;
+        else {
+            PlayClearScreen();
+            cout << player.GetName() << endl;
+            cout << "Your input is not valid!\n" << player.GetName() << "\nYour target[1 - 20]: "
+                 << to_string(playerTargetScore) << endl;
+            continue;
+        }
+        break;
+    } while (true);
+
+    if (playerMultiplier == Single) PlayThrowAt(Target(playerTargetScore), currentPlayer);
+    else if (playerMultiplier == Double) PlayThrowAt(Target(playerTargetScore, 2), currentPlayer);
+    else PlayThrowAt(Target(playerTargetScore, 3), currentPlayer);
+
+    // if the player has busted
+    if (player.isBust()) return player;
+    // if the player has played a round correctly
+    currentPlayer.setTempScore(currentPlayer.GetScore());
+    return currentPlayer;
+}
+
+void Game::PlayThrowAt(Target target, Player &player) {
     ushort randTarget;
+    player.SetLastTarget(target);
     // If the target is a multiplier make it harder to hit
     (target.IsMultiplied()) ? randTarget = 110 : randTarget = 100;
     // random side
@@ -432,13 +485,9 @@ void Game::PlayThrowAt(Target target, Player &player) {
 
     // the player misses
     if ((rand() % randTarget > player.GetAccuracy()) && player.GetAccuracy() != 100) {
-        miss = true;
-        msg += player.GetName() + " missed!\n";
+        player.setMiss(true);
         // 20% chance of missing entirely when aiming for doubles
-        if (target.GetMultiplier() == 2 && rand() % 100 < 20) {
-            msg += player.GetName() + " missed the player area completely and scored 0!";
-            return;
-        }
+        if (target.GetMultiplier() == 2 && rand() % 100 < 20) return;
 
         // Hit a neighbouring section
         ushort index = 0;
@@ -470,15 +519,26 @@ void Game::PlayThrowAt(Target target, Player &player) {
 
     }
     // new target has been hit
-    msg += player.GetName() + " hits ";
-    if (target.GetMultiplier() == Triple) msg += "triple ";
-    else if (target.GetMultiplier() == Double) msg += "double ";
-    msg += to_string(target.GetValue()) + ((miss) ? "instead!" : "") + "\n";
-    player.SetLastTarget(target);
+
+    // bust
+    if (player.GetScore() - target.GetValue(true) < 2 && player.GetScore() - target.GetValue(true) != 0) {
+        player.setBust(true);
+        return;
+    }
+
+    // not finishing on a double
+    if (player.GetScore() - target.GetValue(true) == 0 && target.GetMultiplier() != Double) {
+        player.setBust(true);
+        player.setNonDoubleEnd(true);
+        return;
+    }
+
+
     // take hit from score
+    player.SetLastHit(target);
     player.ReduceScore(target.GetValue(true));
-    if (player.IsCPU()) msg += player.GetName() + " now has a score of " + to_string(player.GetScore()) + "!\n\n";
 }
+//endregion
 
 string Game::GetReport() {
     string msg = "These are the results of " + to_string(_iterations) + " matches:\n";
@@ -589,7 +649,8 @@ string Game::GetReport() {
     float winnerTotalWinsPercentage = float(winnerTotalWins) / float(_iterations) * 100.0f;
     float loserTotalWinsPercentage = float(loserTotalWins) / float(_iterations) * 100.0f;
 
-    msg += ",\nwon " + to_string(winnerTotalWins) + " matches (" + to_string(winnerTotalWinsPercentage).substr(0, 5) +
+    msg += ",\nwon " + to_string(winnerTotalWins) + " matches (" +
+           to_string(winnerTotalWinsPercentage).substr(0, 5) +
            "%)\nand " + to_string(highest).substr(0, 5) + "% of the matches were won with a score of ";
     if (index == 0 || index == 7) msg += "7 to 0  ";
     else if (index == 1 || index == 8) msg += "7 to 1 ";
@@ -621,9 +682,18 @@ string Game::GetReport() {
         }
     }
 
-    msg += "\nOut of " + to_string(_iterations) + " matches, the loser, " + loser.GetName();
-    msg += ",\nwon " + to_string(loserTotalWins) + " matches (" + to_string(loserTotalWinsPercentage).substr(0, 5) +
-           "%)\nand " + to_string(highest).substr(0, 5) + "% of the matches were won with a score of ";
+    if (loserTotalWins == 0)
+        msg += "\nOut of " + to_string(_iterations) +
+               " matches, the loser, " + loser.GetName() +
+               ",\nwon no matches";
+
+    else
+        msg += "\nOut of " + to_string(_iterations) +
+               " matches, the loser, " + loser.GetName() +
+               ",\nwon " + to_string(loserTotalWins) + " matches ("
+               + to_string(loserTotalWinsPercentage).substr(0, 5) +
+               "%)\nand " + to_string(highest).substr(0, 5) +
+               "% of the matches were won with a score of ";
 
     if (index == 0 || index == 7) msg += "7 to 0  ";
     else if (index == 1 || index == 8) msg += "7 to 1 ";
