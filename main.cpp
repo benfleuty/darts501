@@ -181,14 +181,14 @@ int main() {
     game.Start();
 #else
     UserIO::ClearScreen();
-
+    enum Player {User,CPU};
     P1.SetName("ben");
     P1.SetAccuracy(73);
-    P1.SetCPU(1);
+    P1.SetCPU(User);
 
     P2.SetName("neb");
-    P2.SetAccuracy(65);
-    P2.SetCPU(1);
+    P2.SetAccuracy(73);
+    P2.SetCPU(CPU);
 
     Game game = Game(P1,P2,100000,1);
     game.Start();
