@@ -19,7 +19,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b269a3a-7d4f-4a9c-bdd9-efbc9a2f57dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <workItem from="1586005925244" duration="9075000" />
       <workItem from="1586090907860" duration="1998000" />
       <workItem from="1586098270892" duration="14998000" />
-      <workItem from="1586178192463" duration="19202000" />
+      <workItem from="1586178192463" duration="19311000" />
     </task>
     <servers />
   </component>
@@ -260,22 +260,22 @@
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <condition expression="currentPlayer.isBust()" language="ObjectiveC" />
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>505</line>
+          <line>500</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>562</line>
+          <line>557</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>701</line>
+          <line>696</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>666</line>
+          <line>661</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>

@@ -411,12 +411,7 @@ void Game::PlayGameUvsCPU() {
 
     PlayClearScreen();
 
-    cout << "Congratulations, " << currentPlayer.GetName() << "! You win!\n\nPress any key to continue...";
-#ifdef WIN32
-    system("pause")
-#else
-    system("read");
-#endif
+    ShowWinMsg(currentPlayer);
 }
 
 void Game::PlayGameUvsU() {
