@@ -152,8 +152,8 @@ void Game::SimulateSet() {
 void Game::SimulateGame() {
     // Game loop
     Player currentPlayer;
-    _player1.Reset();
-    _player2.Reset();
+    _player1.Reset(true);
+    _player2.Reset(true);
     if (_firstThrower) currentPlayer = _player1;
     else currentPlayer = _player2;
     _firstThrower = !_firstThrower;
@@ -400,42 +400,6 @@ void Game::PlaySet() {
 }
 
 void Game::PlayGameUvsCPU() {
-    //region old
-//    // Game loop
-//    Player currentPlayer;
-//    _player1.Reset(true);
-//    _player2.Reset(true);
-//    if (_firstThrower) currentPlayer = _player1;
-//    else currentPlayer = _player2;
-//    _firstThrower = !_firstThrower;
-//    while (true) {
-//        for (ushort i = 0; i < 3; ++i) {
-//            if (currentPlayer.IsCPU())
-//                currentPlayer = SimulateTurnVsU(currentPlayer);
-//            else currentPlayer = PlayTurn(currentPlayer);
-//            if (currentPlayer.GetScore() == 0) {
-//                if (currentPlayer.GetName() == _player1.GetName())
-//                    p1GameWins++;
-//                else if (currentPlayer.GetName() == _player2.GetName())
-//                    p2GameWins++;
-//                break;
-//            }
-//        }
-//
-//        if (currentPlayer.GetName() == _player1.GetName()) {
-//            _player1 = currentPlayer;
-//            currentPlayer = _player2;
-//        } else {
-//            _player2 = currentPlayer;
-//            currentPlayer = _player1;
-//        }
-//    }
-//
-//    PlayClearScreen();
-//
-//    ShowWinMsg(currentPlayer);
-    //endregion
-    // Game loop
     Player currentPlayer, basePlayer;
     _player1.Reset(true);
     _player2.Reset(true);
@@ -478,7 +442,6 @@ void Game::PlayGameUvsCPU() {
     PlayClearScreen();
 
     ShowWinMsg(currentPlayer);
-
 }
 
 void Game::PlayGameUvsU() {
