@@ -20,6 +20,7 @@
     <list default="true" id="5b269a3a-7d4f-4a9c-bdd9-efbc9a2f57dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +78,7 @@
       <workItem from="1586005925244" duration="9075000" />
       <workItem from="1586090907860" duration="1998000" />
       <workItem from="1586098270892" duration="14998000" />
-      <workItem from="1586178192463" duration="19311000" />
+      <workItem from="1586178192463" duration="22370000" />
     </task>
     <servers />
   </component>
@@ -108,11 +109,11 @@
     </state>
     <state x="398" y="446" key="#xdebugger.evaluate/0.0.2560.1403@0.0.2560.1403" timestamp="1585301087371" />
     <state x="1478" y="458" key="#xdebugger.evaluate/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586113027115" />
-    <state width="463" height="506" key="DebuggerActiveHint" timestamp="1586188148072">
+    <state width="463" height="506" key="DebuggerActiveHint" timestamp="1586200300129">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state width="463" height="506" key="DebuggerActiveHint/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586183097715" />
-    <state width="463" height="506" key="DebuggerActiveHint/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586188148072" />
+    <state width="463" height="506" key="DebuggerActiveHint/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586200300129" />
     <state width="1230" height="471" key="GridCell.Tab.-1.bottom" timestamp="1586185073704">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
@@ -133,38 +134,38 @@
     </state>
     <state width="1230" height="472" key="GridCell.Tab.-1.right/0.0.2560.1403@0.0.2560.1403" timestamp="1585418182553" />
     <state width="1230" height="471" key="GridCell.Tab.-1.right/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586185073704" />
-    <state width="1230" height="485" key="GridCell.Tab.0.bottom" timestamp="1586197242097">
+    <state width="1230" height="485" key="GridCell.Tab.0.bottom" timestamp="1586200587670">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state width="1230" height="472" key="GridCell.Tab.0.bottom/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
     <state width="1230" height="472" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
     <state width="1230" height="392" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586185376924" />
     <state width="1230" height="471" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473828" />
-    <state width="1230" height="485" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586197242097" />
-    <state width="1230" height="485" key="GridCell.Tab.0.center" timestamp="1586197242097">
+    <state width="1230" height="485" key="GridCell.Tab.0.bottom/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586200587670" />
+    <state width="1230" height="485" key="GridCell.Tab.0.center" timestamp="1586200587670">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state width="1230" height="472" key="GridCell.Tab.0.center/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
     <state width="1230" height="472" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
     <state width="1230" height="392" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586185376924" />
     <state width="1230" height="471" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473827" />
-    <state width="1230" height="485" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586197242097" />
-    <state width="1230" height="485" key="GridCell.Tab.0.left" timestamp="1586197242097">
+    <state width="1230" height="485" key="GridCell.Tab.0.center/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586200587670" />
+    <state width="1230" height="485" key="GridCell.Tab.0.left" timestamp="1586200587670">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state width="1230" height="472" key="GridCell.Tab.0.left/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237536" />
     <state width="1230" height="472" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
     <state width="1230" height="392" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586185376924" />
     <state width="1230" height="471" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473827" />
-    <state width="1230" height="485" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586197242097" />
-    <state width="1230" height="485" key="GridCell.Tab.0.right" timestamp="1586197242097">
+    <state width="1230" height="485" key="GridCell.Tab.0.left/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586200587670" />
+    <state width="1230" height="485" key="GridCell.Tab.0.right" timestamp="1586200587670">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state width="1230" height="472" key="GridCell.Tab.0.right/0.0.2560.1403@0.0.2560.1403" timestamp="1585421237537" />
     <state width="1230" height="472" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585514879668" />
     <state width="1230" height="392" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586185376924" />
     <state width="1230" height="471" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836473828" />
-    <state width="1230" height="485" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586197242097" />
+    <state width="1230" height="485" key="GridCell.Tab.0.right/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586200587670" />
     <state width="1230" height="471" key="GridCell.Tab.1.bottom" timestamp="1586185071988">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
@@ -246,48 +247,44 @@
     <state x="1382" y="337" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585513923582" />
     <state x="1382" y="337" width="672" height="677" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585836970013" />
     <state x="1382" y="337" width="672" height="677" key="run.anything.popup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586010275871" />
-    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup" timestamp="1586189894743">
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup" timestamp="1586198193940">
       <screen x="1080" y="0" width="2560" height="1440" />
     </state>
     <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1403@1080.0.2560.1440" timestamp="1585512353658" />
     <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1407@1080.0.2560.1440" timestamp="1586184816705" />
     <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1413@1080.0.2560.1440" timestamp="1585603515517" />
-    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586189894743" />
+    <state x="1383" y="319" width="672" height="678" key="search.everywhere.popup/1080.0.2560.1440/0.0.1080.1920@1080.0.2560.1440" timestamp="1586198193940" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <condition expression="currentPlayer.isBust()" language="ObjectiveC" />
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>500</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>557</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>696</line>
+          <line>764</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Game.cpp</url>
-          <line>661</line>
+          <line>729</line>
           <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Game.cpp</url>
+          <line>494</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Game.cpp</url>
+          <line>451</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="loserTotalWins" />
-        <watch expression="loserTotalWinsPercentage" />
-        <watch expression="winnerTotalWins" />
-        <watch expression="winnerTotalWinsPercentage" />
-        <watch expression="msg" language="ObjectiveC" />
-        <watch expression="highest" />
+        <watch expression="target" />
+        <watch expression="player" />
+        <watch expression="currentPlayer" />
       </configuration>
     </watches-manager>
   </component>

@@ -194,16 +194,13 @@ Player Game::SimulateTurn(Player player) {
 
 Player Game::SimulateTurnVsU(Player player) {
     Player currentPlayer = player;
-
-    for (ushort i = 0; i < 3; i++) {
-        Target target = CalculateTarget(currentPlayer.GetScore());
-        PlayThrowAt(target, currentPlayer);
-        // if the player has won
-        if (currentPlayer.GetScore() == 0) break;
-        // if the player has busted
-        if (currentPlayer.GetScore() < 2) return player;
-    }
-
+    currentPlayer.Reset();
+    Target target = CalculateTarget(currentPlayer.GetScore());
+    SimulateThrowAt(target, currentPlayer);
+    
+    // if the player has busted
+    if (currentPlayer.isBust()) currentPlayer.SetScore(player.GetScore());
+    // if the player has played a round correctly
     return currentPlayer;
 }
 
@@ -275,15 +272,20 @@ Target Game::CalculateTarget(short currentScore) {
 
 void Game::SimulateThrowAt(Target target, Player &player) {
     ushort randTarget;
+    player.SetLastTarget(target);
     // If the target is a multiplier make it harder to hit
     (target.IsMultiplied()) ? randTarget = 110 : randTarget = 100;
     // random side
     bool direction = rand() % 2;
 
-    // the player misses
+    // the currentPlayer misses
     if ((rand() % randTarget > player.GetAccuracy()) && player.GetAccuracy() != 100) {
+        player.setMiss(true);
         // 20% chance of missing entirely when aiming for doubles
-        if (target.GetMultiplier() == 2 && rand() % 100 < 20) return;
+        if (target.GetMultiplier() == 2 && rand() % 100 < 20) {
+            player.SetLastHit(0);
+            return;
+        }
 
         // Hit a neighbouring section
         ushort index = 0;
@@ -300,27 +302,46 @@ void Game::SimulateThrowAt(Target target, Player &player) {
             // right
         else { if (index == 19) index = 0; }
 
-
-
         // if bull choose random number to hit instead
         if (target.GetValue() == 25) index += rand() % 10;
 
         target.SetTarget(_board[index]);
 
-        if (target.GetMultiplier() == 1) {
-            // 15% chance of hitting multiplier if not aiming for a multiplier
-            if (rand() % 100 < 15) target.SetMultiplier(1);
-        } else {
-            // 55% chance of hitting multiplier if aiming for a multiplier
-            if (rand() % 100 < 55) target.SetMultiplier(target.GetMultiplier());
+        if (target.GetValue() != 25 && target.GetValue() != 50) {
+            if (target.GetMultiplier() == 1) {
+                // 15% chance of hitting multiplier if not aiming for a multiplier
+                if (rand() % 100 < 15) target.SetMultiplier(1);
+            } else {
+                // 55% chance of hitting multiplier if aiming for a multiplier
+                if (rand() % 100 < 55) target.SetMultiplier(target.GetMultiplier());
+            }
         }
+    }
+    // new target has been hit
 
-        // new target has been hit
+    // bust
+    if (player.GetScore() - target.GetValue(true) < 2 && player.GetScore() - target.GetValue(true) != 0) {
+        player.SetLastHit(target);
+        player.setBust(true);
+        return;
     }
 
+    player.setBust(false);
+
+    // not finishing on a double
+    if (player.GetScore() - target.GetValue(true) == 0 &&
+        (target.GetMultiplier() != Double && target.GetValue() != 50)) {
+        player.setBust(true);
+        player.setNonDoubleEnd(true);
+        return;
+    }
+
+    player.setBust(false);
 
     // take hit from score
+    player.SetLastHit(target);
     player.ReduceScore(target.GetValue(true));
+    return;
 
 }
 
@@ -379,17 +400,62 @@ void Game::PlaySet() {
 }
 
 void Game::PlayGameUvsCPU() {
+    //region old
+//    // Game loop
+//    Player currentPlayer;
+//    _player1.Reset(true);
+//    _player2.Reset(true);
+//    if (_firstThrower) currentPlayer = _player1;
+//    else currentPlayer = _player2;
+//    _firstThrower = !_firstThrower;
+//    while (true) {
+//        for (ushort i = 0; i < 3; ++i) {
+//            if (currentPlayer.IsCPU())
+//                currentPlayer = SimulateTurnVsU(currentPlayer);
+//            else currentPlayer = PlayTurn(currentPlayer);
+//            if (currentPlayer.GetScore() == 0) {
+//                if (currentPlayer.GetName() == _player1.GetName())
+//                    p1GameWins++;
+//                else if (currentPlayer.GetName() == _player2.GetName())
+//                    p2GameWins++;
+//                break;
+//            }
+//        }
+//
+//        if (currentPlayer.GetName() == _player1.GetName()) {
+//            _player1 = currentPlayer;
+//            currentPlayer = _player2;
+//        } else {
+//            _player2 = currentPlayer;
+//            currentPlayer = _player1;
+//        }
+//    }
+//
+//    PlayClearScreen();
+//
+//    ShowWinMsg(currentPlayer);
+    //endregion
     // Game loop
-    Player currentPlayer;
+    Player currentPlayer, basePlayer;
     _player1.Reset(true);
     _player2.Reset(true);
     if (_firstThrower) currentPlayer = _player1;
     else currentPlayer = _player2;
     _firstThrower = !_firstThrower;
+    // while no one has won
     while (true) {
-        if (currentPlayer.IsCPU())
-            currentPlayer = SimulateTurnVsU(currentPlayer);
-        else currentPlayer = PlayTurn(currentPlayer);
+        basePlayer = currentPlayer;
+        for (int i = 0; i < 3; ++i) {
+            PlayClearScreen();
+            // take three throws
+            if (currentPlayer.IsCPU())
+                currentPlayer = SimulateTurnVsU(currentPlayer);
+            else currentPlayer = PlayTurn(currentPlayer);
+            if (currentPlayer.GetScore() == 0 || currentPlayer.isBust()) break;
+            if (currentPlayer.GetName() == _player1.GetName()) _player1 = currentPlayer;
+            else _player2 = currentPlayer;
+        }
+        // if the player has won
         if (currentPlayer.GetScore() == 0) {
             if (currentPlayer.GetName() == _player1.GetName())
                 p1GameWins++;
@@ -397,7 +463,9 @@ void Game::PlayGameUvsCPU() {
                 p2GameWins++;
             break;
         }
-
+        // if the player has bust
+        if (currentPlayer.isBust()) currentPlayer.SetScore(basePlayer.GetScore());
+        //swap players
         if (currentPlayer.GetName() == _player1.GetName()) {
             _player1 = currentPlayer;
             currentPlayer = _player2;
@@ -410,6 +478,7 @@ void Game::PlayGameUvsCPU() {
     PlayClearScreen();
 
     ShowWinMsg(currentPlayer);
+
 }
 
 void Game::PlayGameUvsU() {
@@ -420,7 +489,6 @@ void Game::PlayGameUvsU() {
     if (_firstThrower) currentPlayer = _player1;
     else currentPlayer = _player2;
     _firstThrower = !_firstThrower;
-    basePlayer = currentPlayer;
     // while no one has won
     while (true) {
         basePlayer = currentPlayer;
