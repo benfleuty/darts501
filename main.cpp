@@ -187,10 +187,10 @@ int main() {
     P1.SetCPU(1);
 
     P2.SetName("neb");
-    P2.SetAccuracy(71);
+    P2.SetAccuracy(65);
     P2.SetCPU(1);
 
-    Game game = Game(P1,P2,1000000,1);
+    Game game = Game(P1,P2,100000,1);
     game.Start();
 
 #endif

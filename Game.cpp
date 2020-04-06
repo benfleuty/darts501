@@ -650,11 +650,12 @@ string Game::GetReport() {
         else p2TotalWins += outcomes[i];
     }
 
-    float highest;
+    float highest = 0.0f;
     bool draw = false;
     bool p1Wins = (p1TotalWins > p2TotalWins);
     if (!p1Wins) if (p1TotalWins == p2TotalWins) draw = true;
-    uint lower, upper;
+    uint lower = 0;
+    uint upper = 0;
 
     if (p1Wins) upper = 7;
     else {
@@ -700,7 +701,7 @@ string Game::GetReport() {
            to_string(winnerTotalWinsPercentage).substr(0, 5) +
            "%)\nand " + to_string(highest).substr(0, 5) +
            "% of the matches were won with a score of ";
-    
+
     if (index == 0 || index == 7) msg += "7 to 0  ";
     else if (index == 1 || index == 8) msg += "7 to 1 ";
     else if (index == 2 || index == 9) msg += "7 to 2 ";
