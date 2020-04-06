@@ -184,11 +184,11 @@ int main() {
     enum Player {User,CPU};
     P1.SetName("ben");
     P1.SetAccuracy(73);
-    P1.SetCPU(User);
+    P1.SetCPU(CPU);
 
     P2.SetName("neb");
     P2.SetAccuracy(73);
-    P2.SetCPU(CPU);
+    P2.SetCPU(User);
 
     Game game = Game(P1,P2,100000,1);
     game.Start();
