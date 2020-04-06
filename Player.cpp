@@ -39,7 +39,7 @@ void Player::ReduceScore(ushort score) {
 }
 
 void Player::Reset(bool resetScore) {
-    if (resetScore) _score = 101;
+    if (resetScore) _score = 501;
     _bust = false;
     _miss = false;
     _nonDoubleEnd = false;

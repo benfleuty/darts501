@@ -16,7 +16,7 @@ class Player {
 private:
     string _name = "";
     ushort _accuracy = 0;
-    short _score = 101;
+    short _score = 501;
     bool _isCPU = true;
     Target _lastTarget;
     Target _lastHit;
