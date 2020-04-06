@@ -219,7 +219,7 @@ Target Game::CalculateTarget(short currentScore) {
     // 2 dart win
     // Dart 1 Reduce to 50 or a double
     // Dart 2 hit the dart <-- handled by 1 dart win
-    if (currentScore <= 100 && IsPossibleScore(currentScore - 60)) {
+    if (currentScore <= 100) {
         short rangeToBull = currentScore - short(50);
         ushort rangeToDouble20 = rangeToBull + 10;
         // throw for bull
