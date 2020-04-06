@@ -199,6 +199,7 @@ int main() {
     cout.clear();
     cout << "Generating report...\n";
     string report = game.GetReport();
+    UserIO::ClearScreen();
     cout << msg << report;
 
     return 0;
