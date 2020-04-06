@@ -197,7 +197,7 @@ Player Game::SimulateTurnVsU(Player player) {
     currentPlayer.Reset();
     Target target = CalculateTarget(currentPlayer.GetScore());
     SimulateThrowAt(target, currentPlayer);
-    
+
     // if the player has busted
     if (currentPlayer.isBust()) currentPlayer.SetScore(player.GetScore());
     // if the player has played a round correctly
@@ -798,9 +798,9 @@ string Game::GetReport() {
     if (loserTotalWins == 0)
         msg += "\nOut of " + to_string(_iterations) +
                " matches, the loser, " + loser.GetName() +
-               ",\nwon no matches";
+               ",\nwon no matches ";
 
-    else
+    else {
         msg += "\nOut of " + to_string(_iterations) +
                " matches, the loser, " + loser.GetName() +
                ",\nwon " + to_string(loserTotalWins) + " matches ("
@@ -808,14 +808,15 @@ string Game::GetReport() {
                "%)\nand " + to_string(highest).substr(0, 5) +
                "% of the matches were won with a score of ";
 
-    if (index == 0 || index == 7) msg += "7 to 0  ";
-    else if (index == 1 || index == 8) msg += "7 to 1 ";
-    else if (index == 2 || index == 9) msg += "7 to 2 ";
-    else if (index == 3 || index == 10) msg += "7 to 3 ";
-    else if (index == 4 || index == 11) msg += "7 to 4 ";
-    else if (index == 5 || index == 12) msg += "7 to 5 ";
-    else if (index == 6 || index == 13) msg += "7 to 6 ";
+        if (index == 0 || index == 7) msg += "7 to 0 \n";
+        else if (index == 1 || index == 8) msg += "7 to 1\n";
+        else if (index == 2 || index == 9) msg += "7 to 2\n";
+        else if (index == 3 || index == 10) msg += "7 to 3\n";
+        else if (index == 4 || index == 11) msg += "7 to 4\n";
+        else if (index == 5 || index == 12) msg += "7 to 5\n";
+        else if (index == 6 || index == 13) msg += "7 to 6\n";
+    }
 
-    msg += "\nwith an accuracy of " + to_string(loser.GetAccuracy()) + "%!\n";
+    msg += "with an accuracy of " + to_string(loser.GetAccuracy()) + "%!\n";
     return msg;
 }
