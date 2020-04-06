@@ -163,7 +163,7 @@ int main() {
     system("title \"501 Darts | Ben Fleuty 1900040 | CMP 102 Assessment");
 #endif
 
-#ifndef NDEBUG
+#ifdef NDEBUG
     SetupP1();
 
     UserIO::ClearScreen();
@@ -183,14 +183,14 @@ int main() {
     UserIO::ClearScreen();
 
     P1.SetName("ben");
-    P1.SetAccuracy(100);
-    P1.SetCPU(0);
+    P1.SetAccuracy(73);
+    P1.SetCPU(1);
 
     P2.SetName("neb");
-    P2.SetAccuracy(100);
-    P2.SetCPU(0);
+    P2.SetAccuracy(71);
+    P2.SetCPU(1);
 
-    Game game = Game(P1,P2,1,1);
+    Game game = Game(P1,P2,1000000,1);
     game.Start();
 
 #endif

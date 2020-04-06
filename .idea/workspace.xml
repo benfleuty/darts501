@@ -20,9 +20,6 @@
     <list default="true" id="5b269a3a-7d4f-4a9c-bdd9-efbc9a2f57dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/Player.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +78,7 @@
       <workItem from="1586005925244" duration="9075000" />
       <workItem from="1586090907860" duration="1998000" />
       <workItem from="1586098270892" duration="14998000" />
-      <workItem from="1586178192463" duration="13871000" />
+      <workItem from="1586178192463" duration="16262000" />
     </task>
     <servers />
   </component>

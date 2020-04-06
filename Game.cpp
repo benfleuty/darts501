@@ -218,13 +218,13 @@ Target Game::CalculateTarget(Player currentPlayer) {
 
     // 1 dart win
     if (currentScore == 50) return Target(50); // bull win
-    if (!(currentScore % 2)) return Target(currentScore / 2, 2); // double win
+    if (IsMultipleOf(2, currentScore) && currentScore <= 40)
+        return Target(currentScore / 2, 2); // double win
 
     // 2 dart win
     // Dart 1 Reduce to 50 or a double
     // Dart 2 hit the dart <-- handled by 1 dart win
-    if (currentScore <= 100 && (IsPossibleScore(currentScore - 50) ||
-                                IsPossibleScore(currentScore - 60))) {
+    if (currentScore <= 100 && IsPossibleScore(currentScore - 60)) {
         short rangeToBull = currentScore - short(50);
         ushort rangeToDouble20 = rangeToBull + 10;
         // throw for bull
