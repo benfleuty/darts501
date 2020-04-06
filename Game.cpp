@@ -181,7 +181,7 @@ Player Game::SimulateTurn(Player player) {
     Player currentPlayer = player;
 
     for (ushort i = 0; i < 3; i++) {
-        Target target = CalculateTarget(currentPlayer);
+        Target target = CalculateTarget(currentPlayer.GetScore());
         SimulateThrowAt(target, currentPlayer);
         // if the player has won
         if (currentPlayer.GetScore() == 0) break;
@@ -196,7 +196,7 @@ Player Game::SimulateTurnVsU(Player player) {
     Player currentPlayer = player;
 
     for (ushort i = 0; i < 3; i++) {
-        Target target = CalculateTarget(currentPlayer);
+        Target target = CalculateTarget(currentPlayer.GetScore());
         PlayThrowAt(target, currentPlayer);
         // if the player has won
         if (currentPlayer.GetScore() == 0) break;
@@ -213,9 +213,7 @@ Target Game::calcRange(short range) {
     return Target(range / 3, 3);
 }
 
-Target Game::CalculateTarget(Player currentPlayer) {
-    short currentScore = currentPlayer.GetScore();
-
+Target Game::CalculateTarget(short currentScore) {
     // 1 dart win
     if (currentScore == 50) return Target(50); // bull win
     if (IsMultipleOf(2, currentScore) && currentScore <= 40)
@@ -454,6 +452,8 @@ void Game::PlayGameUvsU() {
             currentPlayer = _player1;
         }
     }
+    PlayClearScreen();
+
     ShowWinMsg(currentPlayer);
 }
 

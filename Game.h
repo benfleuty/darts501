@@ -71,7 +71,7 @@ public:
 
     Player PlayThrowAt(Target, Player);
 
-    static Target CalculateTarget(Player);
+    static Target CalculateTarget(short);
 
     Player SimulateTurn(Player player);
 
