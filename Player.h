@@ -16,18 +16,13 @@ class Player {
 private:
     string _name = "";
     ushort _accuracy = 0;
-    short _score = 501;
+    short _score = 101;
     bool _isCPU = true;
     Target _lastTarget;
     Target _lastHit;
     bool _bust = false;
     bool _miss = false;
     bool _nonDoubleEnd = false;
-    short _tempScore = 501;
-public:
-    short getTempScore() const;
-
-    void setTempScore(short tempScore);
 
 public:
     bool isNonDoubleEnd() const;
@@ -54,6 +49,7 @@ public:
     void SetAccuracy(ushort);
 
     short GetScore();
+    void SetScore(short score);
 
     void ReduceScore(ushort);
 

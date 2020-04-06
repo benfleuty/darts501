@@ -163,7 +163,7 @@ int main() {
     system("title \"501 Darts | Ben Fleuty 1900040 | CMP 102 Assessment");
 #endif
 
-#ifdef NDEBUG
+#ifndef NDEBUG
     SetupP1();
 
     UserIO::ClearScreen();
@@ -183,11 +183,11 @@ int main() {
     UserIO::ClearScreen();
 
     P1.SetName("ben");
-    P1.SetAccuracy(73);
+    P1.SetAccuracy(100);
     P1.SetCPU(0);
 
     P2.SetName("neb");
-    P2.SetAccuracy(71);
+    P2.SetAccuracy(100);
     P2.SetCPU(0);
 
     Game game = Game(P1,P2,1,1);
@@ -197,7 +197,9 @@ int main() {
 
     UserIO::ClearScreen();
     cout.clear();
-    cout << msg << game.GetReport();
+    cout << "Generating report...\n";
+    string report = game.GetReport();
+    cout << msg << report;
 
     return 0;
 }

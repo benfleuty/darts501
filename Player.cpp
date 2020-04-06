@@ -30,15 +30,21 @@ short Player::GetScore() {
     return _score;
 }
 
+void Player::SetScore(short score) {
+    _score = score;
+}
+
 void Player::ReduceScore(ushort score) {
     _score -= score;
 }
 
 void Player::Reset(bool resetScore) {
-    if(resetScore) _score = 501;
-     _bust = false;
-     _miss = false;
-     _nonDoubleEnd = false;
+    if (resetScore) _score = 101;
+    _bust = false;
+    _miss = false;
+    _nonDoubleEnd = false;
+    _lastHit = Target(0);
+    _lastTarget = Target(0);
 }
 
 bool Player::IsCPU() {
@@ -87,12 +93,4 @@ bool Player::isNonDoubleEnd() const {
 
 void Player::setNonDoubleEnd(bool nonDoubleEnd) {
     _nonDoubleEnd = nonDoubleEnd;
-}
-
-short Player::getTempScore() const {
-    return _tempScore;
-}
-
-void Player::setTempScore(short tempScore) {
-    Player::_tempScore = tempScore;
 }

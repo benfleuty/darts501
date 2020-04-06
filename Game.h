@@ -25,7 +25,7 @@ protected:
 
     bool _firstThrower = true;
 
-    vector<array<ushort, 2>> _matches;
+    vector<array<uint, 2>> _matches;
 
     void SimulateMatch();
 
@@ -69,7 +69,7 @@ public:
 
     void SimulateThrowAt(Target, Player &);
 
-    void PlayThrowAt(Target, Player &);
+    Player PlayThrowAt(Target, Player);
 
     static Target CalculateTarget(Player);
 
