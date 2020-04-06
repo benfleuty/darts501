@@ -52,6 +52,7 @@ bool Player::IsCPU() {
 }
 
 void Player::SetCPU(bool value) {
+    if(value) _name = "CPU " + _name;
     _isCPU = value;
 }
 
