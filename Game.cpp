@@ -698,7 +698,9 @@ string Game::GetReport() {
 
     msg += ",\nwon " + to_string(winnerTotalWins) + " matches (" +
            to_string(winnerTotalWinsPercentage).substr(0, 5) +
-           "%)\nand " + to_string(highest).substr(0, 5) + "% of the matches were won with a score of ";
+           "%)\nand " + to_string(highest).substr(0, 5) +
+           "% of the matches were won with a score of ";
+    
     if (index == 0 || index == 7) msg += "7 to 0  ";
     else if (index == 1 || index == 8) msg += "7 to 1 ";
     else if (index == 2 || index == 9) msg += "7 to 2 ";
