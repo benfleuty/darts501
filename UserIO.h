@@ -28,7 +28,8 @@ public:
     static string String(const string&);
     static string String(const string&,bool);
 
-    static bool Bool(const string&);
+    static bool Bool(const string& prompt);
+    static bool Bool(const string& prompt, char noChar, char yesChar);
 
 };
 

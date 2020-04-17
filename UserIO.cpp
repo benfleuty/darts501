@@ -27,31 +27,29 @@ void UserIO::ResetCin() {
     //cin.ignore();
 }
 
-string UserIO::String(const string& prompt = "", bool allowEmpty = false) {
+string UserIO::String(const string &prompt = "", bool allowEmpty = false) {
     string userInput;
     cout << prompt;
 
     while (true) {
         //ResetCin();
         getline(cin, userInput);
-        if (userInput.empty() || userInput[0] == ' ' && !allowEmpty){
+        if (userInput.empty() || userInput[0] == ' ' && !allowEmpty) {
             ClearScreen();
             cout << "\nYour input was not a valid string!\n";
-            if(prompt.empty()) cout << "Your input: ";
+            if (prompt.empty()) cout << "Your input: ";
             else cout << prompt;
-        }
-
-        else break;
+        } else break;
     }
     ResetCin();
     return userInput;
 }
 
-string UserIO::String(const string& prompt = ""){
-    return String(prompt,false);
+string UserIO::String(const string &prompt = "") {
+    return String(prompt, false);
 }
 
-int UserIO::Int(const string& prompt) {
+int UserIO::Int(const string &prompt) {
     string userInput;
     long int input;
     cout << prompt;
@@ -67,7 +65,7 @@ int UserIO::Int(const string& prompt) {
 
             return input;
         }
-        catch(...) {
+        catch (...) {
             cout << "\nYour input is not a valid number!\n";
 
             if (prompt.empty()) cout << "Your input: ";
@@ -76,7 +74,7 @@ int UserIO::Int(const string& prompt) {
     }
 }
 
-uint UserIO::uInt(const string& prompt) {
+uint UserIO::uInt(const string &prompt) {
     string userInput;
     unsigned long int input;
     cout << prompt;
@@ -84,7 +82,7 @@ uint UserIO::uInt(const string& prompt) {
     while (true) {
         ResetCin();
         getline(cin, userInput);
-        try{
+        try {
             input = stoi(userInput);
             ResetCin();
             if (input > UINT32_MAX)
@@ -92,7 +90,7 @@ uint UserIO::uInt(const string& prompt) {
 
             return input;
         }
-        catch(...) {
+        catch (...) {
             cout << "\nYour input is not a valid number!\n";
 
             if (prompt.empty()) cout << "Your input: ";
@@ -101,7 +99,7 @@ uint UserIO::uInt(const string& prompt) {
     }
 }
 
-short UserIO::Short(const string& prompt) {
+short UserIO::Short(const string &prompt) {
     string userInput;
     int input;
     cout << prompt;
@@ -119,7 +117,7 @@ short UserIO::Short(const string& prompt) {
 
             return input;
         }
-        catch(...) {
+        catch (...) {
             cout << "\nYour input is not a valid number!\n";
             if (prompt.empty()) cout << "Your input: ";
             else cout << prompt;
@@ -127,7 +125,7 @@ short UserIO::Short(const string& prompt) {
     }
 }
 
-ushort UserIO::uShort(const string& prompt) {
+ushort UserIO::uShort(const string &prompt) {
     string userInput;
     uint input;
     cout << prompt;
@@ -156,11 +154,23 @@ ushort UserIO::uShort(const string& prompt) {
 bool UserIO::Bool(const string& prompt) {
     while (true) {
         ClearScreen();
-        unsigned char userInput = tolower(UserIO::String(prompt,false)[0]);
+        unsigned char userInput = tolower(UserIO::String(prompt, false)[0]);
         if (userInput == 'n')
             return false;
 
         if (userInput == 'y')
+            return true;
+    }
+}
+
+bool UserIO::Bool(const string& prompt, char noChar = 'n', char yesChar = 'y') {
+    while (true) {
+        ClearScreen();
+        unsigned char userInput = tolower(UserIO::String(prompt, false)[0]);
+        if (userInput == noChar)
+            return false;
+
+        if (userInput == yesChar)
             return true;
     }
 }
