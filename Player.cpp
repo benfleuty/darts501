@@ -22,8 +22,7 @@ ushort Player::GetAccuracy() {
 }
 
 void Player::SetAccuracy(ushort accuracy) {
-    if (accuracy > 100) accuracy = 100;
-    else _accuracy = accuracy;
+    _accuracy = accuracy;
 }
 
 short Player::GetScore() {
@@ -52,7 +51,7 @@ bool Player::IsCPU() {
 }
 
 void Player::SetCPU(bool value) {
-    if(value) _name = "CPU " + _name;
+    if (value) _name = "CPU " + _name;
     _isCPU = value;
 }
 

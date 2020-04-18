@@ -22,7 +22,7 @@ ushort Target::GetMultiplier()
 
 bool Target::IsMultiplied()
 {
-    return (_multiplier > 1) ? true : false;
+    return _multiplier > 1;
 }
 
 ushort Target::GetValue(bool multiply)
