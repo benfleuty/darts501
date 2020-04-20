@@ -88,7 +88,7 @@ public:
 
     bool isAiAdvanced() const;
 
-    void setAiAdvanced(bool aiAdvanced);
+    Target SimpleCalculateTarget(short currentScore);
 };
 
 

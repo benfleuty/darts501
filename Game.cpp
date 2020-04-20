@@ -17,12 +17,8 @@ bool Game::isAiAdvanced() const {
     return _aiAdvanced;
 }
 
-void Game::setAiAdvanced(bool aiAdvanced) {
-    _aiAdvanced = aiAdvanced;
-}
-
 enum Multiplier {
-    Zero, Single, Double, Triple
+    Invalid, Single, Double, Triple
 };
 
 bool Game::IsSimulation(Player player1, Player player2) {
@@ -186,7 +182,8 @@ Player Game::SimulateTurn(Player player) {
     Player currentPlayer = player;
 
     for (ushort i = 0; i < 3; i++) {
-        Target target = CalculateTarget(currentPlayer.GetScore());
+        Target target = isAiAdvanced() ? CalculateTarget(currentPlayer.GetScore())
+                                    : SimpleCalculateTarget(currentPlayer.GetScore());
         SimulateThrowAt(target, currentPlayer);
         // if the player has won
         if (currentPlayer.GetScore() == 0) break;
@@ -216,6 +213,90 @@ Target Game::calcRange(short range) {
 }
 
 Target Game::CalculateTarget(short currentScore) {
+    // 1 dart win
+    if (currentScore == 50) return Target(50); // bull win
+    if (IsMultipleOf(2, currentScore) && currentScore <= 40)
+        return Target(currentScore / 2, 2); // double win
+
+    // 2 dart win
+    // Dart 1 Reduce to 50 or a double
+    // Dart 2 hit the dart <-- handled by 1 dart win
+    if (currentScore <= 100) {
+        short rangeToBull = currentScore - short(50);
+        ushort rangeToDouble20 = rangeToBull + 10;
+        // throw for bull
+        if (rangeToBull > 0) {
+            // aim to get to 50
+            if (IsPossibleScore(rangeToBull)) {
+                if (rangeToBull <= 20) return Target(rangeToBull);
+                if (rangeToBull <= 40) return Target(rangeToBull / 2, 2);
+                return Target(rangeToBull / 3, 3);
+                // try to hit bull
+            }
+        }
+        // impossible to score range for bull
+
+        // aim to get 40
+        if (rangeToDouble20 > 0) {
+            if (IsPossibleScore(rangeToDouble20)) {
+                if (rangeToDouble20 <= 20) return Target(rangeToDouble20);
+                if (rangeToDouble20 <= 40) return Target(rangeToDouble20 / 2, 2);
+                return Target(rangeToDouble20 / 3, 3);
+            }
+        }
+
+        // The range between the player's score and the bull/40 is not
+        // a value that can be scored
+
+        // if the score is lower than 40
+        // this value is odd as 1 dart win would handle
+        // any even values less than 41
+        if (currentScore < 40) {
+            // Aim for 32 for double 16 win
+            if (currentScore > 32) return Target(currentScore - 32);
+            // Score is <= 31
+            // 3 is the best to throw for as there are odd numbers either  side of 3
+            // (19,17) - hitting any of these three will result in an even number
+            // meaning that a double can be attempted on the next throw
+            return Target(3);
+        }
+    }
+
+    // 3 dart win
+    if (currentScore <= 160) {
+        short rangeToBull = currentScore - 50;
+        // if bull in 1 dart reach
+        if (rangeToBull <= 60) return calcRange(rangeToBull);
+    }
+    // bull more than 60 points away - score as high as possible
+    return Target(20, 3);
+}
+
+Target Game::SimpleCalculateTarget(short currentScore) {
+    // If hitting 60 is best score
+    if(currentScore >= 110) return Target(20,Triple);
+    // Hit a bull to get close to bull win
+    if(currentScore >= 100) return Target(50);
+    // If a bull is not possible
+    if (currentScore >= 50){
+        ushort range = 50 - currentScore;
+        // score is 50 - hit a bull
+        if (range == 0) return Target(50);
+        // score is 20 or less and can be hit with a single
+        if (range <= 20) return Target(range,Single);
+        // score is 40 - 49 and the best score is 40 to get close to a bull
+        if (range >= 40) return Target(20,Double);
+        // score is 21 - 39
+        // if the range can be hit with a triple
+        if (IsMultipleOf(3,range)) return Target(range/3,Triple);
+        // if the range can be hit with a double
+        if (IsMultipleOf(2,range)) return Target(range/2,Double);
+        // the range cannot be hit
+        // reduce the range by one to produce an even number than can be hit with a double
+        range--;
+        return (range,Double);
+    }
+
     // 1 dart win
     if (currentScore == 50) return Target(50); // bull win
     if (IsMultipleOf(2, currentScore) && currentScore <= 40)
@@ -786,6 +867,9 @@ string Game::GetReport() {
     }
 
     msg += "with an accuracy of " + to_string(loser.GetAccuracy()) + "%!\n";
+    msg += "AI technique: ";
+    msg += isAiAdvanced() ? "Advanced" : "Simple";
+    msg += "\n";
     return msg;
 }
 
