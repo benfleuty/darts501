@@ -17,65 +17,27 @@ Player P2;
 string msg;
 
 //region PlayerSetup
-void SetupP1() {
-    P1.SetName(UserIO::String("Enter Player 1's name: "));
-    UserIO::ClearScreen();
+void SetupPlayer(Player &player) {
+    bool ready;
     do {
-        P1.SetAccuracy(UserIO::uShort("Enter " + P1.GetName() + "'s accuracy [1-100]: "));
-        if (P1.GetAccuracy() > 0 && P1.GetAccuracy() <= 100) break;
-        cout << "\nInvalid accuracy!";
+        player.SetName(UserIO::String("Enter a player's name: "));
         UserIO::ClearScreen();
-    } while (P1.GetAccuracy() == 0 || P1.GetAccuracy() > 100);
-    P1.SetCPU(UserIO::Bool("Is " + P1.GetName() + " controlled by the computer? [Y/N]: "));
-}
-
-void SetupP2() {
-    P2.SetName(UserIO::String("Enter Player 2's name: "));
-    UserIO::ClearScreen();
-    do {
-        P2.SetAccuracy(UserIO::uShort("Enter " + P2.GetName() + "'s accuracy [1-100]: "));
-        if (P2.GetAccuracy() > 0 && P2.GetAccuracy() <= 100) break;
-        cout << "\nInvalid accuracy!";
+        do {
+            player.SetAccuracy(UserIO::uShort("Enter " + player.GetName() + "'s accuracy [1-100]: "));
+            if (player.GetAccuracy() > 0 && player.GetAccuracy() <= 100) break;
+            cout << "\nInvalid accuracy!";
+            UserIO::ClearScreen();
+        } while (player.GetAccuracy() == 0 || player.GetAccuracy() > 100);
+        player.SetCPU(UserIO::Bool("Is " + player.GetName() + " controlled by the computer? [Y/N]: "));
         UserIO::ClearScreen();
-    } while (P2.GetAccuracy() == 0 || P2.GetAccuracy() > 100);
-    P2.SetCPU(UserIO::Bool("Is " + P2.GetName() + " controlled by the computer? [Y/N]: "));
-}
-
-bool CheckP1() {
-    while (true) {
-        UserIO::ClearScreen();
-        string prompt = "Player 1:\nName: " + P1.GetName() +
-                        "\nAccuracy: " + to_string(P1.GetAccuracy()) +
-                        "\n" + ((P1.IsCPU()) ? "CPU" : "User") + " controlled" +
-                        "\nAre these details correct? [Y/N]:";
-        return UserIO::Bool(prompt);
-
-    }
-}
-
-bool CheckP2() {
-    while (true) {
-        UserIO::ClearScreen();
-        string prompt = "Player 2:\nName: " + P2.GetName() +
-                        "\nAccuracy: " + to_string(P2.GetAccuracy()) +
-                        "\n" + ((P2.IsCPU()) ? "CPU" : "User") + " controlled" +
-                        "\nAre these details correct? [Y/N]:";
-        return UserIO::Bool(prompt);
-    }
-}
-
-void CheckPlayers() {
-    while (true) {
-        bool P1Ready = CheckP1();
-        UserIO::ClearScreen();
-        if (!P1Ready) SetupP1();
-        UserIO::ClearScreen();
-        bool P2Ready = CheckP2();
-        UserIO::ClearScreen();
-        if (!P2Ready) SetupP2();
-
-        if (P1Ready && P2Ready) return;
-    }
+        string prompt = // region prompt
+                "Player 1:\nName: " + player.GetName() +
+                "\nAccuracy: " + to_string(player.GetAccuracy()) +
+                "\n" + ((player.IsCPU()) ? "CPU" : "User") + " controlled" +
+                "\nAre these details correct? [Y/N]:";
+                        //endregion
+        ready = UserIO::Bool(prompt);
+    } while (!ready);
 }
 
 
@@ -147,7 +109,11 @@ Game SetupGame() {
 
     cout << " landed closest to the bull and will throw first!\n";
     msg += " threw first on the first game\n";
-    return Game(P1, P2, GetIterations(), firstThrower);
+
+    bool aiAdvanced = false;
+    if(P1.IsCPU() || P2.IsCPU())
+        aiAdvanced = UserIO::Bool("Do you want the AI to be [s]imple or [a]dvanced: ",'s','a');
+    return Game(P1, P2, GetIterations(), firstThrower,aiAdvanced);
 }
 
 //endregion
@@ -159,16 +125,12 @@ int main() {
     system("title \"501 Darts | Ben Fleuty 1900040 | CMP 102 Assessment");
 #endif
 
-#ifdef NDEBUG
-    SetupP1();
+#ifndef DEBUG
+    SetupPlayer(P1);
 
     UserIO::ClearScreen();
 
-    SetupP2();
-
-    UserIO::ClearScreen();
-
-    CheckPlayers();
+    SetupPlayer(P2);
 
     UserIO::ClearScreen();
 
