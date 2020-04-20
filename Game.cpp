@@ -439,7 +439,7 @@ void ShowWinMsg(Player winner, string what = "game") {
     cout << "Congratulations, " << winner.GetName() << "! You win this " << what << "!"
          << endl << "Press ENTER to continue..." << endl;
 #ifdef WIN32
-    system("pause")
+    system("pause");
 #else
     system("read");
 #endif
