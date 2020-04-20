@@ -125,7 +125,7 @@ int main() {
     system("title \"501 Darts | Ben Fleuty 1900040 | CMP 102 Assessment");
 #endif
 
-#ifndef DEBUG
+#ifndef NDEBUG
     SetupPlayer(P1);
 
     UserIO::ClearScreen();
@@ -150,7 +150,7 @@ int main() {
     P2.SetAccuracy(71);
     P2.SetCPU(CPU);
 
-    Game game = Game(P1, P2, 100, 0);
+    Game game = Game(P1, P2, 10000, 0,0);
     game.Start();
 
 #endif
