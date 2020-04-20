@@ -55,14 +55,17 @@ protected:
 
     bool IsPlayerVsAI();
 
+    bool _aiAdvanced;
+
 public:
     Game() {}
 
-    Game(Player player1, Player player2, uint iterations, bool firstThrower) {
+    Game(Player player1, Player player2, uint iterations, bool firstThrower,bool aiAdvanced) {
         _player1 = std::move(player1);
         _player2 = std::move(player2);
         _iterations = iterations;
         _firstThrower = firstThrower;
+        _aiAdvanced = aiAdvanced;
     }
 
     void Start();
@@ -82,6 +85,10 @@ public:
     Player SimulateTurnVsU(Player player);
 
     void PlayClearScreen();
+
+    bool isAiAdvanced() const;
+
+    void setAiAdvanced(bool aiAdvanced);
 };
 
 

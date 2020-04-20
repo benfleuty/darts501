@@ -10,10 +10,16 @@
 
 using namespace std;
 typedef unsigned short ushort;
-typedef unsigned long ulong;
 
 ushort match, set, game;
 
+bool Game::isAiAdvanced() const {
+    return _aiAdvanced;
+}
+
+void Game::setAiAdvanced(bool aiAdvanced) {
+    _aiAdvanced = aiAdvanced;
+}
 
 enum Multiplier {
     Zero, Single, Double, Triple
@@ -119,7 +125,6 @@ void Game::Start() {
         // Play Match loop
     else for (int i = 0; i < _iterations; ++i) PlayMatch();
 }
-
 
 //region Simulation
 
@@ -783,3 +788,4 @@ string Game::GetReport() {
     msg += "with an accuracy of " + to_string(loser.GetAccuracy()) + "%!\n";
     return msg;
 }
+
